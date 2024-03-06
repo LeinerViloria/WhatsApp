@@ -8,12 +8,11 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Search" Order="Primary"/>
         
-        <ToolbarItem Text="New group" Order="Secondary"/>
-        <ToolbarItem Text="New broadcast" Order="Secondary"/>
-        <ToolbarItem Text="Linked Devices" Order="Secondary"/>
-        <ToolbarItem Text="Starred Messages" Order="Secondary"/>
-        <ToolbarItem Text="Payments" Order="Secondary"/>
-        <ToolbarItem Text="Settings" Order="Secondary"/>
+        <ToolbarItem Text="Nuevo grupo" Order="Secondary"/>
+        <ToolbarItem Text="Nueva difusión" Order="Secondary"/>
+        <ToolbarItem Text="Dispositivos vinculados" Order="Secondary"/>
+        <ToolbarItem Text="Mensajes destacados" Order="Secondary"/>
+        <ToolbarItem Text="Ajustes" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     
     <Grid RowDefinitions="*, Auto">
