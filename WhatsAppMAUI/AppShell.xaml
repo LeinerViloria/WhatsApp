@@ -8,10 +8,14 @@
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate pages:ChatsPage}" Title="Chats" />
-            <ShellContent ContentTemplate="{DataTemplate pages:StatusPage}" Title="Status" />
-            <ShellContent ContentTemplate="{DataTemplate pages:CallsPage}" Title="Calls" />
+        <Tab Title="Chats">
+            <ShellContent ContentTemplate="{DataTemplate pages:ChatsPage}" />
+        </Tab>
+        <Tab Title="Estados">
+            <ShellContent ContentTemplate="{DataTemplate pages:StatusPage}" />
+        </Tab>
+        <Tab Title="Llamadas">
+            <ShellContent ContentTemplate="{DataTemplate pages:CallsPage}" />
         </Tab>
     </TabBar>
 
