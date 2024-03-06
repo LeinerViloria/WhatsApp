@@ -5,7 +5,7 @@
              Title="WhatsApp">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Search" Order="Primary"/>
+        <ToolbarItem Text="Cámara" Order="Primary"/>
         
         <ToolbarItem Text="Ajustes" Order="Secondary"/>
     </ContentPage.ToolbarItems>

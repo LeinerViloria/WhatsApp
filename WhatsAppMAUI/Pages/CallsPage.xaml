@@ -5,8 +5,8 @@
              Title="WhatsApp">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Search" Order="Primary"/>
-        
+        <ToolbarItem Text="Cámara" Order="Primary"/>
+
         <ToolbarItem Text="Borrar registro de llamadas" Order="Secondary"/>
         <ToolbarItem Text="Ajustes" Order="Secondary"/>
     </ContentPage.ToolbarItems>

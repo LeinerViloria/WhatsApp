@@ -6,7 +6,7 @@
              Title="WhatsApp">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Search" Order="Primary"/>
+        <ToolbarItem Text="Cámara" Order="Primary"/>
         
         <ToolbarItem Text="Nuevo grupo" Order="Secondary"/>
         <ToolbarItem Text="Nueva difusión" Order="Secondary"/>
