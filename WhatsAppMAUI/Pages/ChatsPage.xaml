@@ -16,7 +16,9 @@
     </ContentPage.ToolbarItems>
 
     <RefreshView IsRefreshing="{Binding Loading}" Command="{Binding OnRefresh}">
-        <Label Text="Hola" />
+        <CollectionView ItemsSource="{Binding Chats}" SelectionMode="Single">
+            
+        </CollectionView>
     </RefreshView>
     
 </ContentPage>
