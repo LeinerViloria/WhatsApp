@@ -1,56 +1,45 @@
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using WhatsAppMAUI.Models;
 
 namespace WhatsAppMAUI.Pages;
 
-public partial class ChatsPage : ContentPage
+public partial class ChatsPage : ContentPage, INotifyPropertyChanged
 {
-	public ChatsPage()
+    public event PropertyChangedEventHandler PropertyChanged;
+    bool LoadingValue { get; set; }
+    public bool Loading { get { return LoadingValue; } set
+        {
+            if(LoadingValue != value)
+            {
+                LoadingValue = value;
+                OnPropertyChanged(nameof(Loading));
+            }
+        }
+    }
+    public Command OnRefresh { get; set; }
+    ObservableCollection<ChatModel> Chats { get; set; }
+    public ChatsPage()
 	{
 		InitializeComponent();
         Chats = new ObservableCollection<ChatModel>(LoadChats());
 
+        OnRefresh = new Command(OnLoading);
+
         BindingContext = this;
 	}
 
-    public ObservableCollection<ChatModel> Chats { get; set; }
+    protected override void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 
-    private static IEnumerable<ChatModel> LoadChats()
-	{
-		return new List<ChatModel>
-		{
-            new ChatModel(("avatar_group.svg"), "Akp Tech", DateTime.Now.AddDays(-2), "Just a test message", 0),
-            new ChatModel(("avatar_group.svg"), "Expenses", DateTime.Now, "Grocery 500", 0),
-            new ChatModel(("avatar.svg"), "Baby", DateTime.Now.AddMinutes(-2), "Honey, when will you", 1),
-            new ChatModel(("avatar_group.svg"), "Office", DateTime.Now.AddDays(-1), "Ready to launch", 10),
-            new ChatModel(("avatar_group.svg"), "Akp Tech", DateTime.Now.AddDays(-2), "Just a test message", 0),
-            new ChatModel(("avatar_group.svg"), "Expenses", DateTime.Now, "Grocery 500", 0),
-            new ChatModel(("avatar.svg"), "Baby", DateTime.Now.AddMinutes(-2), "Honey, when will you", 1),
-            new ChatModel(("avatar_group.svg"), "Office", DateTime.Now.AddDays(-1), "Ready to launch", 10),
-            new ChatModel(("avatar_group.svg"), "Akp Tech", DateTime.Now.AddDays(-2), "Just a test message", 0),
-            new ChatModel(("avatar_group.svg"), "Expenses", DateTime.Now, "Grocery 500", 0),
-            new ChatModel(("avatar.svg"), "Baby", DateTime.Now.AddMinutes(-2), "Honey, when will you", 1),
-            new ChatModel(("avatar_group.svg"), "Office", DateTime.Now.AddDays(-1), "Ready to launch", 10),
-            new ChatModel(("avatar_group.svg"), "Akp Tech", DateTime.Now.AddDays(-2), "Just a test message", 0),
-            new ChatModel(("avatar_group.svg"), "Expenses", DateTime.Now, "Grocery 500", 0),
-            new ChatModel(("avatar.svg"), "Baby", DateTime.Now.AddMinutes(-2), "Honey, when will you", 1),
-            new ChatModel(("avatar_group.svg"), "Office", DateTime.Now.AddDays(-1), "Ready to launch", 10),
-            new ChatModel(("avatar_group.svg"), "Akp Tech", DateTime.Now.AddDays(-2), "Just a test message", 0),
-            new ChatModel(("avatar_group.svg"), "Expenses", DateTime.Now, "Grocery 500", 0),
-            new ChatModel(("avatar.svg"), "Baby", DateTime.Now.AddMinutes(-2), "Honey, when will you", 1),
-            new ChatModel(("avatar_group.svg"), "Office", DateTime.Now.AddDays(-1), "Ready to launch", 10),
-            new ChatModel(("avatar_group.svg"), "Akp Tech", DateTime.Now.AddDays(-2), "Just a test message", 0),
-            new ChatModel(("avatar_group.svg"), "Expenses", DateTime.Now, "Grocery 500", 0),
-            new ChatModel(("avatar.svg"), "Baby", DateTime.Now.AddMinutes(-2), "Honey, when will you", 1),
-            new ChatModel(("avatar_group.svg"), "Office", DateTime.Now.AddDays(-1), "Ready to launch", 10),
-            new ChatModel(("avatar_group.svg"), "Akp Tech", DateTime.Now.AddDays(-2), "Just a test message", 0),
-            new ChatModel(("avatar_group.svg"), "Expenses", DateTime.Now, "Grocery 500", 0),
-            new ChatModel(("avatar.svg"), "Baby", DateTime.Now.AddMinutes(-2), "Honey, when will you", 1),
-            new ChatModel(("avatar_group.svg"), "Office", DateTime.Now.AddDays(-1), "Ready to launch", 10),
-            new ChatModel(("avatar_group.svg"), "Akp Tech", DateTime.Now.AddDays(-2), "Just a test message", 0),
-            new ChatModel(("avatar_group.svg"), "Expenses", DateTime.Now, "Grocery 500", 0),
-            new ChatModel(("avatar.svg"), "Baby", DateTime.Now.AddMinutes(-2), "Honey, when will you", 1),
-            new ChatModel(("avatar_group.svg"), "Office", DateTime.Now.AddDays(-1), "Ready to launch", 10),
-        };
-	}
+    public void OnLoading()
+    {
+        Loading = true;
+
+        _ = DisplayAlert("Hola", "Mensaje", "Cancelar");
+
+        Loading = false;
+    }
 }
