@@ -36,9 +36,12 @@ public partial class ChatsPage : ContentPage, INotifyPropertyChanged
     public Command OnRefresh { get; set; }
     public ObservableCollection<ChatModel> Chats { get; set; }
 
+    int Skip { get; set; }
+    int Take => 3;
+
     public ChatsPage()
 	{
-        Chats = new ObservableCollection<ChatModel>(LoadChats());
+        Chats = new ObservableCollection<ChatModel>(LoadData(Skip, Take));
 
         OnRefresh = new Command(OnLoading);
 
@@ -57,7 +60,11 @@ public partial class ChatsPage : ContentPage, INotifyPropertyChanged
         Loading = true;
         ShowArchiveds = true;
 
-        _ = DisplayAlert("Hola", "Mensaje", "Cancelar");
+        var TotalToLoad = Chats.Count + Take;
+
+        var Result = LoadData(TotalToLoad, 1).First();
+
+        Chats.Add(Result);
 
         Loading = false;
     }

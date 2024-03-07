@@ -22,7 +22,7 @@
                     <Label Text="Archivados" />
                 </StackLayout>
 
-                <CollectionView Grid.Row="0" Margin="0, 30, 0, 0" ItemsSource="{Binding Chats}" SelectionChanged="ShowChats">
+                <CollectionView Grid.Row="0" Margin="0, 30, 0, 0" ItemsSource="{Binding Chats}" SelectionMode="Single" SelectionChanged="ShowChats">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:ChatModel">
                             <Grid ColumnDefinitions="Auto, *" Padding="10, 0, 0, 0">
