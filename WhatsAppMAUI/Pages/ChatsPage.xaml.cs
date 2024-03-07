@@ -17,14 +17,32 @@ public partial class ChatsPage : ContentPage, INotifyPropertyChanged
             }
         }
     }
+
+    bool ShowArchivedsValue { get; set; }
+
+    public bool ShowArchiveds
+    {
+        get { return ShowArchivedsValue; }
+        set
+        {
+            if (ShowArchivedsValue != value)
+            {
+                ShowArchivedsValue = value;
+                OnPropertyChanged(nameof(ShowArchiveds));
+            }
+        }
+    }
+
     public Command OnRefresh { get; set; }
     ObservableCollection<ChatModel> Chats { get; set; }
+
     public ChatsPage()
 	{
-		InitializeComponent();
         Chats = new ObservableCollection<ChatModel>(LoadChats());
 
         OnRefresh = new Command(OnLoading);
+
+        InitializeComponent();
 
         BindingContext = this;
 	}
@@ -37,9 +55,15 @@ public partial class ChatsPage : ContentPage, INotifyPropertyChanged
     public void OnLoading()
     {
         Loading = true;
+        ShowArchiveds = true;
 
         _ = DisplayAlert("Hola", "Mensaje", "Cancelar");
 
         Loading = false;
+    }
+
+    public void ShowChats(object Sender, EventArgs e)
+    {
+        _ = DisplayAlert("Hola", "Se muestra el chat", "Cancelar");
     }
 }
