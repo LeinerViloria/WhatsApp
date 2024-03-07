@@ -60,9 +60,9 @@ public partial class ChatsPage : ContentPage, INotifyPropertyChanged
         Loading = true;
         ShowArchiveds = true;
 
-        var TotalToLoad = Chats.Count + Take;
+        Skip = Chats.Count;
 
-        var Result = LoadData(TotalToLoad, 1).First();
+        var Result = LoadData(Skip, 1).First();
 
         Chats.Add(Result);
 
