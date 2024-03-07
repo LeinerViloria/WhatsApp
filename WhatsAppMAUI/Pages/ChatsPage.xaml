@@ -21,12 +21,32 @@
                 <StackLayout Grid.Row="0" IsVisible="{Binding ShowArchiveds}">
                     <Label Text="Archivados" />
                 </StackLayout>
-                
-                <CollectionView Grid.Row="1" ItemsSource="{Binding Chats}">
-                    
+
+                <CollectionView Grid.Row="0" Margin="0, 30, 0, 0" ItemsSource="{Binding Chats}" SelectionChanged="ShowChats">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:ChatModel">
+                            <Grid ColumnDefinitions="Auto, *" Padding="10, 0, 0, 0">
+                                <Image Grid.Column="0" Source="{Binding Avatar}" HeightRequest="50" WidthRequest="50" />
+                                
+                                <Grid Grid.Column="1" RowDefinitions="Auto, Auto" Padding="10">
+                                    <Grid ColumnDefinitions="*, Auto">
+                                        <VerticalStackLayout Spacing="5">
+                                            <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold"/>
+                                            <Label Text="{Binding LastMessage}" />
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                                            <Label Text="{Binding LastMessageAtDisplay}" />
+                                            <Label Text="{Binding UnreadCount}" HorizontalTextAlignment="End"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <Button Grid.Row="2" 
+                <Button Grid.Row="0" 
                     Text="+" 
                     FontSize="30"
                     FontAttributes="Bold"

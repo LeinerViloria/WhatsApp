@@ -34,7 +34,7 @@ public partial class ChatsPage : ContentPage, INotifyPropertyChanged
     }
 
     public Command OnRefresh { get; set; }
-    ObservableCollection<ChatModel> Chats { get; set; }
+    public ObservableCollection<ChatModel> Chats { get; set; }
 
     public ChatsPage()
 	{
