@@ -2,18 +2,45 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhatsAppMAUI.Pages.StatusPage"
-             Title="WhatsApp">
-
+             Title="WhatsApp"
+             HeightRequest="450"
+             WidthRequest="800">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cámara" Order="Primary"/>
-        
+
         <ToolbarItem Text="Ajustes" Order="Secondary"/>
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout>
-        <Label 
-            Text="Status Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+  
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding Estados}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding Imagen}" HeightRequest="50" WidthRequest="50" Margin="0,0,10,0" HorizontalOptions="Center"/>
+                                <StackLayout>
+                                    <Label Text="{Binding Nombre}" />
+                                    <Label Text="{Binding Hora}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Enviar" Clicked="EnviarButton_Click"/>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
+
+
+
+
+
+
+
+
+   

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhatsAppMAUI.Pages.CallsPage"
-             Title="WhatsApp">
+             Title="WhatsApp"
+             >
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cámara" Order="Primary"/>
@@ -11,10 +12,35 @@
         <ToolbarItem Text="Ajustes" Order="Secondary"/>
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout>
-        <Label 
-            Text="Calls Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" BackgroundColor="#075E54">
+                    <Label Text="Llamadas" FontSize="Title" TextColor="White" Margin="10,0" />
+                </StackLayout>
+
+                <ListView Grid.Row="1" ItemsSource="{Binding Llamadas}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="10" >
+                                    <Image Source="{Binding Imagen}" WidthRequest="50" HeightRequest="50"  Margin="0,0,10,0" HorizontalOptions="Center"  />
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label Text="{Binding Nombre}" FontSize="Medium" />
+                                        <Label Text="{Binding TipoLlamada}" FontSize="Small" TextColor="Gray" />
+                                        <Label Text="{Binding Hora}" FontSize="Small" TextColor="Gray" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
